@@ -3,6 +3,9 @@
 package lesson2.task2
 
 import lesson1.task1.sqr
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sqrt
 
 /**
  * Пример
@@ -18,7 +21,13 @@ fun pointInsideCircle(x: Double, y: Double, x0: Double, y0: Double, r: Double) =
  * Четырехзначное число назовем счастливым, если сумма первых двух ее цифр равна сумме двух последних.
  * Определить, счастливое ли заданное число, вернуть true, если это так.
  */
-fun isNumberHappy(number: Int): Boolean = TODO()
+fun isNumberHappy(number: Int): Boolean
+    {
+        val ret: Boolean
+        if ((number / 1000 + (number - number / 1000 * 1000) / 100) == ((number % 100) / 10 + ((number % 100) - (number % 100) / 10 * 10))) ret = true
+        else ret = false
+        return ret
+    }
 
 /**
  * Простая
@@ -27,8 +36,15 @@ fun isNumberHappy(number: Int): Boolean = TODO()
  * Определить, угрожают ли они друг другу. Вернуть true, если угрожают.
  * Считать, что ферзи не могут загораживать друг друга.
  */
-fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
+fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean
 
+{
+
+    return if (((x1 == x2) || (y1 == y2)) || (kotlin.math.abs(x1 - x2) == kotlin.math.abs(y1 - y2))) true
+    else false
+
+
+}
 
 /**
  * Простая
@@ -36,7 +52,25 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int): Boolean = TODO()
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
-fun daysInMonth(month: Int, year: Int): Int = TODO()
+fun daysInMonth(month: Int, year: Int): Int
+{
+ var days: Int
+ if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) days = 30
+else {
+    if (month == 2)
+        {
+            if ((year % 400) == 0) days = 29
+            else
+            {
+                if (((year % 4) == 0) && ((year % 100) != 0)) days = 29
+                else days = 28
+            }
+        }
+        else days = 31
+}
+    return days
+
+}
 
 /**
  * Средняя
@@ -48,8 +82,18 @@ fun daysInMonth(month: Int, year: Int): Int = TODO()
 fun circleInside(
     x1: Double, y1: Double, r1: Double,
     x2: Double, y2: Double, r2: Double
-): Boolean = TODO()
+): Boolean {
+    var ret: Boolean
+    var dist: Double
+    if (r1 <= r2) {
+        dist = sqrt((sqr(x1 - x2) + sqr(y1 - y2)))
+        if ((dist + r1) <= r2) ret = true
+        else ret = false
+    }
 
+    else ret = false
+    return ret
+}
 /**
  * Средняя
  *
@@ -59,4 +103,23 @@ fun circleInside(
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
+    var ret: Boolean = true
+    var sides: Int = 0
+
+    if ((a * b) > (r * s) && (a * c) > (r * s) && (b * c) > (r * s)) ret = false
+    else {
+        if (a <= max(r, s)) sides = sides else sides = sides + 1
+        if (b <= max(r, s)) sides = sides else sides = sides + 1
+        if (c <= max(r, s)) sides = sides else sides = sides + 1
+        if (sides > 1) ret = false
+        else {
+            sides = 0
+            if (a <= min(r, s)) sides = sides else sides = sides + 1
+            if (b <= min(r, s)) sides = sides else sides = sides + 1
+            if (c <= min(r, s)) sides = sides else sides = sides + 1
+            if (sides > 2) ret = false
+        }
+        }
+  return ret
+}
