@@ -334,19 +334,19 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun squareSequenceDigit(n: Int): Int {
-    if (n == 1) return 1
-    var count = 1
+    //if (n == 1) return 1
+    var count = 0
     var posled = 1
-    var digits = 1
+    var digits = 0
     var temp: Int
     var needednumber: Int
     do {
         count++
-        digits += digitNumber(sqr(count))
+        temp = sqr(count)
+        digits += digitNumber(temp)
     } while (digits < n)
 
     needednumber = digits - n + 1
-    temp = sqr(count)
 
     for (i: Int in 1..needednumber) {
         if (temp >= 10) posled = temp % 10 else posled = temp
