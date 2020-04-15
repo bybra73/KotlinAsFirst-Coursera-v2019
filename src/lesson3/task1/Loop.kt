@@ -334,9 +334,8 @@ fun hasDifferentDigits(n: Int): Boolean {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun squareSequenceDigit(n: Int): Int {
-    //if (n == 1) return 1
     var count = 0
-    var posled = 1
+    var posled = 0
     var digits = 0
     var temp: Int
     var needednumber: Int
@@ -352,12 +351,13 @@ fun squareSequenceDigit(n: Int): Int {
         if (temp >= 10) posled = temp % 10 else posled = temp
         temp /= 10
     }
-
-
-
     return posled
-
 }
+
+/**
+ * Функция возвращает цифру в цисле считая справа
+ */
+fun needednumber(n: Int): Int = TODO()
 
 /**
  * Сложная
