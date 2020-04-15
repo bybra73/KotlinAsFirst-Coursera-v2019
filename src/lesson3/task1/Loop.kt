@@ -197,7 +197,16 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
  */
 
 
-fun collatzSteps(x: Int): Int = TODO()
+fun collatzSteps(x: Int): Int {
+    var xxx = x
+    var count = 0
+    if (xxx == 1) return count
+    do {
+        if (xxx % 2 == 0) xxx /= 2 else xxx = 3 * xxx + 1
+        count++
+    } while (xxx != 1)
+    return count
+}
 
 /**
  * Средняя
