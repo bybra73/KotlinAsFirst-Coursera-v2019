@@ -5,7 +5,9 @@ package lesson3.task1
 import lesson1.task1.sqr
 import java.lang.Integer.max
 import java.lang.Integer.min
+import kotlin.math.pow
 import kotlin.math.sqrt
+import kotlin.math.PI as PI1
 
 
 /**
@@ -217,7 +219,23 @@ fun collatzSteps(x: Int): Int {
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.sin и другие стандартные реализации функции синуса в этой задаче запрещается.
  */
-fun sin(x: Double, eps: Double): Double = TODO()
+fun sin(x: Double, eps: Double): Double {
+    var xxx = x
+    var chlen: Double
+    var count = 3
+    var sign = -1
+    xxx /= kotlin.math.PI
+    xxx %= 2.0
+    xxx *= kotlin.math.PI
+    var sinus = xxx
+    do {
+        chlen = xxx.pow(count.toDouble()) / factorial(count).toDouble()
+        sinus += sign * chlen
+        sign *= -1
+        count += 2
+    } while (chlen > eps)
+    return sinus
+}
 
 /**
  * Средняя
@@ -228,7 +246,23 @@ fun sin(x: Double, eps: Double): Double = TODO()
  * Подумайте, как добиться более быстрой сходимости ряда при больших значениях x.
  * Использовать kotlin.math.cos и другие стандартные реализации функции косинуса в этой задаче запрещается.
  */
-fun cos(x: Double, eps: Double): Double = TODO()
+fun cos(x: Double, eps: Double): Double {
+    var xxx = x
+    var cosinus = 1.0
+    var chlen: Double
+    var count = 2
+    var sign = -1
+    xxx /= kotlin.math.PI
+    xxx %= 2.0
+    xxx *= kotlin.math.PI
+    do {
+        chlen = xxx.pow(count.toDouble()) / factorial(count).toDouble()
+        cosinus += sign * chlen
+        sign *= -1
+        count += 2
+    } while (chlen > eps)
+    return cosinus
+}
 
 /**
  * Средняя
@@ -237,7 +271,17 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var lastdigit = n
+    var nnn = n
+    var newdigit = 0
+    while (nnn / 10 != 0) {
+        lastdigit = nnn % 10
+        newdigit = newdigit * 10 + lastdigit
+        nnn /= 10
+    }
+    return newdigit * 10 + nnn
+}
 
 /**
  * Средняя
@@ -248,7 +292,10 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var nnn = n
+    return n == revert(nnn)
+}
 
 /**
  * Средняя
@@ -258,7 +305,24 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var last1 = n
+    var last2 = n
+    var nnn = n
+    var res = false
+    while (nnn / 10 != 0) {
+        last1 = nnn % 10
+        nnn /= 10
+        last2 = nnn % 10
+        if (last1 != last2) {
+            res = true
+            break
+        }
+
+
+    }
+    return res
+}
 
 /**
  * Сложная
@@ -269,7 +333,31 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    if (n == 1) return 1
+    var count = 1
+    var posled = 1
+    var digits = 1
+    var temp: Int
+    var needednumber: Int
+    do {
+        count++
+        digits += digitNumber(sqr(count))
+    } while (digits < n)
+
+    needednumber = digits - n + 1
+    temp = sqr(count)
+
+    for (i: Int in 1..needednumber) {
+        if (temp >= 10) posled = temp % 10 else posled = temp
+        temp /= 10
+    }
+
+
+
+    return posled
+
+}
 
 /**
  * Сложная

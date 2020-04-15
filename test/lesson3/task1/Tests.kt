@@ -200,7 +200,7 @@ class Tests {
     @Tag("Normal")
     fun revert() {
         assertEquals(87431, revert(13478))
-        assertEquals(0, revert(0))
+        assertEquals(1, revert(10))
         assertEquals(3, revert(3))
         assertEquals(111, revert(111))
         assertEquals(17571, revert(17571))
@@ -230,11 +230,11 @@ class Tests {
     @Test
     @Tag("Hard")
     fun squareSequenceDigit() {
-        assertEquals(1, squareSequenceDigit(1))
-        assertEquals(4, squareSequenceDigit(2))
-        assertEquals(5, squareSequenceDigit(7))
-        assertEquals(6, squareSequenceDigit(12))
-        assertEquals(0, squareSequenceDigit(17))
+         assertEquals(1, squareSequenceDigit(1))
+         assertEquals(4, squareSequenceDigit(2))
+         assertEquals(9, squareSequenceDigit(3))
+         assertEquals(5, squareSequenceDigit(7))
+       assertEquals(0, squareSequenceDigit(17))
         assertEquals(9, squareSequenceDigit(27))
     }
 
