@@ -334,7 +334,7 @@ fun hasDifferentDigits(n: Int): Boolean {
 fun squareSequenceDigit(n: Int): Int {
     var count = 0
     var digits = 0
-    var temp = 0
+    var temp: Int
     do {
         count++
         temp = sqr(count)
@@ -365,4 +365,14 @@ fun neededNumber(n: Int, digitNo: Int): Int {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun fibSequenceDigit(n: Int): Int = TODO()
+fun fibSequenceDigit(n: Int): Int {
+    var count = 0
+    var digits = 0
+    var temp: Int
+    do {
+        count++
+        temp = fib(count)
+        digits += digitNumber(temp)
+    } while (digits < n)
+    return neededNumber(temp, digits - n + 1)
+}
