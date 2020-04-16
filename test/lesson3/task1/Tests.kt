@@ -230,13 +230,22 @@ class Tests {
     @Test
     @Tag("Hard")
     fun squareSequenceDigit() {
-         assertEquals(1, squareSequenceDigit(1))
-         assertEquals(4, squareSequenceDigit(2))
-         assertEquals(9, squareSequenceDigit(3))
-         assertEquals(5, squareSequenceDigit(7))
-       assertEquals(0, squareSequenceDigit(17))
+        assertEquals(1, squareSequenceDigit(1))
+        assertEquals(4, squareSequenceDigit(2))
+        assertEquals(9, squareSequenceDigit(3))
+        assertEquals(5, squareSequenceDigit(7))
+        assertEquals(0, squareSequenceDigit(17))
         assertEquals(9, squareSequenceDigit(27))
     }
+
+    @Test
+    @Tag("Hard")
+    fun neededNumber() {
+        assertEquals(1, neededNumber(18, 2))
+        assertEquals(3, neededNumber(53978, 4))
+        assertEquals(6, neededNumber(623553978, 9))
+    }
+
 
     @Test
     @Tag("Hard")

@@ -318,8 +318,6 @@ fun hasDifferentDigits(n: Int): Boolean {
             res = true
             break
         }
-
-
     }
     return res
 }
@@ -335,29 +333,28 @@ fun hasDifferentDigits(n: Int): Boolean {
  */
 fun squareSequenceDigit(n: Int): Int {
     var count = 0
-    var posled = 0
     var digits = 0
-    var temp: Int
-    var needednumber: Int
+    var temp = 0
     do {
         count++
         temp = sqr(count)
         digits += digitNumber(temp)
     } while (digits < n)
-
-    needednumber = digits - n + 1
-
-    for (i: Int in 1..needednumber) {
-        if (temp >= 10) posled = temp % 10 else posled = temp
-        temp /= 10
-    }
-    return posled
+    return neededNumber(temp, digits - n + 1)
 }
 
 /**
- * Функция возвращает цифру в цисле считая справа
+ * Функция возвращает цифру в числе считая справа
  */
-fun needednumber(n: Int): Int = TODO()
+fun neededNumber(n: Int, digitNo: Int): Int {
+    var nnn = n
+    var posled = 0
+    for (i: Int in 1..digitNo) {
+        if (nnn >= 10) posled = nnn % 10 else posled = nnn
+        nnn /= 10
+    }
+    return posled
+}
 
 /**
  * Сложная
