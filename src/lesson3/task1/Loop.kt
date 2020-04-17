@@ -127,8 +127,8 @@ fun lcm(m: Int, n: Int): Int {
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
 fun minDivisor(n: Int): Int {
-    var MinDiv = 2
-    if (n % 2 == 0)
+    var MinDiv = n
+    if (n % 2 == 0) MinDiv = 2
     else for (m in 3..sqrt(n.toDouble()).toInt() step 2) if (n % m == 0) {
         MinDiv = m
         break
