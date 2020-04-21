@@ -48,12 +48,7 @@ fun biRoots(a: Double, b: Double, c: Double): List<Double> {
  * Выделить в список отрицательные элементы из заданного списка
  */
 fun negativeList(list: List<Int>): List<Int> {
-    val result = mutableListOf<Int>()
-    for (element in list) {
-        if (element < 0) {
-            result.add(element)
-        }
-    }
+    val result = list.filter { it < 0 }
     return result
 }
 
@@ -62,14 +57,11 @@ fun negativeList(list: List<Int>): List<Int> {
  *
  * Изменить знак для всех положительных элементов списка
  */
-fun invertPositives(list: MutableList<Int>) {
-    for (i in 0 until list.size) {
-        val element = list[i]
-        if (element > 0) {
-            list[i] = -element
-        }
-    }
+fun invertPositives(list: MutableList<Int>): MutableList<Int> {
+    for (i in list.indices) if (list[i] > 0) list[i] *= -1
+    return list
 }
+
 
 /**
  * Пример
@@ -242,7 +234,13 @@ fun factorize(n: Int): List<Int> {
  * Результат разложения вернуть в виде строки, например 75 -> 3*5*5
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
-fun factorizeToString(n: Int): String = TODO()
+fun factorizeToString(n: Int): String {
+    var newstring: String
+    newstring = factorize(n).joinToString(
+        separator = "*"
+    )
+    return newstring
+}
 
 /**
  * Средняя
