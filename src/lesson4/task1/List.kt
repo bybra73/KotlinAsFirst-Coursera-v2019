@@ -249,7 +249,18 @@ fun factorizeToString(n: Int): String {
  * Результат перевода вернуть в виде списка цифр в base-ичной системе от старшей к младшей,
  * например: n = 100, base = 4 -> (1, 2, 1, 0) или n = 250, base = 14 -> (1, 3, 12)
  */
-fun convert(n: Int, base: Int): List<Int> = TODO()
+fun convert(n: Int, base: Int): List<Int> {
+    var result = mutableListOf<Int>()
+    var nn = n
+    while (nn >= base) {
+        result.add(nn % base)
+        nn /= base
+    }
+    result.add(nn)
+    result.reverse()
+    return result
+}
+
 
 /**
  * Сложная
@@ -262,7 +273,42 @@ fun convert(n: Int, base: Int): List<Int> = TODO()
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, n.toString(base) и подобные), запрещается.
  */
-fun convertToString(n: Int, base: Int): String = TODO()
+fun convertToString(n: Int, base: Int): String {
+    var List: MutableList<Int> = convert(n, base) as MutableList<Int>
+    var result: String = ""
+    for (i in List.indices) {
+        when (List[i]) {
+            in 0..9 -> result += List[i].toString()
+            10 -> result += "a"
+            11 -> result += "b"
+            12 -> result += "c"
+            13 -> result += "d"
+            14 -> result += "e"
+            15 -> result += "f"
+            16 -> result += "g"
+            17 -> result += "h"
+            18 -> result += "i"
+            19 -> result += "j"
+            20 -> result += "k"
+            21 -> result += "l"
+            22 -> result += "m"
+            23 -> result += "n"
+            24 -> result += "o"
+            25 -> result += "p"
+            26 -> result += "q"
+            27 -> result += "r"
+            28 -> result += "s"
+            29 -> result += "t"
+            30 -> result += "u"
+            31 -> result += "v"
+            32 -> result += "w"
+            33 -> result += "x"
+            34 -> result += "y"
+            35 -> result += "z"
+        }
+    }
+    return result
+}
 
 /**
  * Средняя
@@ -271,7 +317,11 @@ fun convertToString(n: Int, base: Int): String = TODO()
  * из системы счисления с основанием base в десятичную.
  * Например: digits = (1, 3, 12), base = 14 -> 250
  */
-fun decimal(digits: List<Int>, base: Int): Int = TODO()
+fun decimal(digits: List<Int>, base: Int): Int {
+    var revdigit = digits.reversed().toMutableList()
+    for (i in revdigit.indices) revdigit[i] *= base.toDouble().pow(i.toDouble()).toInt()
+    return revdigit.sum()
+}
 
 /**
  * Сложная
