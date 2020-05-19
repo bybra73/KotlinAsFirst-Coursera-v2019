@@ -6,6 +6,7 @@ import lesson1.task1.discriminant
 import lesson3.task1.minDivisor
 import kotlin.math.pow
 import kotlin.math.sqrt
+import kotlin.Int as Int
 
 /**
  * Пример
@@ -335,7 +336,51 @@ fun decimal(digits: List<Int>, base: Int): Int {
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int = TODO()
+fun decimalFromString(str: String, base: Int): Int {
+    val List: MutableList<Int> = mutableListOf<Int>()
+    var result: Int
+    for (i in str.indices) when (str[i]) {
+        '0' -> List += 0
+        '1' -> List += 1
+        '2' -> List += 2
+        '3' -> List += 3
+        '4' -> List += 4
+        '5' -> List += 5
+        '6' -> List += 6
+        '7' -> List += 7
+        '8' -> List += 8
+        '9' -> List += 9
+        'a' -> List += 10
+        'b' -> List += 11
+        'c' -> List += 12
+        'd' -> List += 13
+        'e' -> List += 14
+        'f' -> List += 15
+        'g' -> List += 16
+        'h' -> List += 17
+        'i' -> List += 18
+        'j' -> List += 19
+        'k' -> List += 20
+        'l' -> List += 21
+        'm' -> List += 22
+        'n' -> List += 23
+        'o' -> List += 24
+        'p' -> List += 25
+        'q' -> List += 26
+        'r' -> List += 27
+        's' -> List += 28
+        't' -> List += 29
+        'u' -> List += 30
+        'v' -> List += 31
+        'w' -> List += 32
+        'x' -> List += 33
+        'y' -> List += 34
+        'z' -> List += 35
+    }
+
+    result = decimal(digits = List, base = base)
+    return result
+}
 
 /**
  * Сложная
